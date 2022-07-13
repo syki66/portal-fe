@@ -1,0 +1,88 @@
+$size: 14px; // 카드 사이즈 (정사각형)
+$tilt: 4; // 홈화면 편집시 기울어지는 각도
+$shake: 0.15; // 홈화면 편집시 상하좌우로 흔들리는 정도
+$speed: 0.3; // 홈화면 편집시 애니메이션 진행 속도
+
+.container {
+    font-size: $size;
+}
+
+.card {
+    padding: 1em;
+    width: 8em;
+    height: 8em;
+    border-radius: 1em;
+    text-align: center;
+    font-size: 1em;
+    border: 0.1em solid;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    transition: transform .1s;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    .icon {
+        width: 3em;
+        margin: auto;
+    }
+    .title {
+        font-weight: 700;
+    }
+    .desc {
+        font-size: 0.7em;
+        padding: 0.5em 0em;
+    }
+}
+
+$keyframe_array: ();
+@for $i from 1 through 10 {
+    $keyframe_array: append($keyframe_array, keyframe_ + #{$i});
+}
+
+// 소수를 이용하여 중복되는 애니메이션 개수가 최소로 되도록 함
+$prime_numbers: (1 2 3 5 7 11 13 17 19);
+@for $i from 1 through length($prime_numbers) {
+    .editing:nth-child(#{nth($prime_numbers, $i)}n) {
+        animation: 
+            nth($keyframe_array, random(length($keyframe_array)))
+            $speed + (random(20) * .01) + s
+            linear
+            infinite;
+    }
+}
+
+// $keyframe_array 개수만큼 애니메이션을 생성함
+@for $i from 1 through length($keyframe_array) {
+    $sign: nth(-1 1, random(2));
+    $rand_tilt: $tilt * (random(20) * .01 + 1);
+    $rand_shake: nth(-1 1, random(2)) * $shake;
+
+    @keyframes #{nth($keyframe_array, $i)} {
+        0% {
+            transform:
+                rotate(0deg) 
+                translate(0em, 0em);
+        }
+        25% {
+            transform:
+                rotate($sign * $rand_tilt + deg) 
+                translate($rand_shake + em, $rand_shake + em);
+        }
+        50% {
+            transform:
+                rotate(0deg) 
+                translate(0em, 0em);
+        }
+        75% {
+            transform: 
+                rotate(-$sign * $rand_tilt + deg) 
+                translate($rand_shake + em, $rand_shake + em);
+        }
+        100% {
+            transform: 
+                rotate(0deg) 
+                translate(0em, 0em);
+        }
+    }
+}

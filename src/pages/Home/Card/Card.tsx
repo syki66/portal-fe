@@ -1,37 +1,33 @@
 import React from "react";
-import "./Card.scss";
+import styles from "./Card.module.scss";
 
 type CardProps = {
+  id: number;
   title: string;
   desc: string;
   iconPath: string;
   bgColor: string;
   accentColor: string;
-  active: boolean;
+  isEdit: boolean;
 };
 
-export default function Card({
-  title,
-  desc,
-  iconPath,
-  bgColor,
-  accentColor,
-  active,
-}: CardProps) {
+export default function Card({ id, title, desc, iconPath, bgColor, accentColor, isEdit }: CardProps) {
   return (
     <>
-      <div
-        style={{
-          backgroundColor: bgColor,
-          color: accentColor,
-          borderColor: accentColor,
-        }}
-        className={`card ${active ? "card--active" : ""}`}
-      >
-        <img className="card__icon" src={iconPath} />
-        <div className="card__content">
-          <h1 className="card__title">{title}</h1>
-          <p className="card__desc">{desc}</p>
+      <div className={styles.container}>
+        <div
+          style={{
+            backgroundColor: bgColor,
+            color: accentColor,
+            borderColor: accentColor,
+          }}
+          className={`${styles.card} ${isEdit ? styles.editing : ""}`}
+        >
+          <img className={styles.icon} src={iconPath} />
+          <div className={styles.content}>
+            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.desc}>{desc}</p>
+          </div>
         </div>
       </div>
     </>
