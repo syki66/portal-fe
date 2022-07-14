@@ -1,16 +1,16 @@
 $size: 14px; // 카드 사이즈 (정사각형)
-$tilt: 4; // 홈화면 편집시 기울어지는 각도
+$tilt: 2; // 홈화면 편집시 기울어지는 각도
 $shake: 0.15; // 홈화면 편집시 상하좌우로 흔들리는 정도
-$speed: 0.3; // 홈화면 편집시 애니메이션 진행 속도
+$speed: 0.35; // 홈화면 편집시 애니메이션 진행 속도
 
 .card {
+    font-size: $size;
     padding: 1em;
     width: 8em;
     height: 8em;
+    // border: 0.1em solid;
     border-radius: 1em;
     text-align: center;
-    font-size: 1em;
-    border: 0.1em solid;
     display: grid;
     grid-template-rows: 2fr 1fr;
     transition: transform .1s;
