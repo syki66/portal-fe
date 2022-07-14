@@ -3,10 +3,6 @@ $tilt: 4; // 홈화면 편집시 기울어지는 각도
 $shake: 0.15; // 홈화면 편집시 상하좌우로 흔들리는 정도
 $speed: 0.3; // 홈화면 편집시 애니메이션 진행 속도
 
-.container {
-    font-size: $size;
-}
-
 .card {
     padding: 1em;
     width: 8em;
@@ -40,7 +36,7 @@ $keyframe_array: ();
     $keyframe_array: append($keyframe_array, keyframe_ + #{$i});
 }
 
-// 소수를 이용하여 중복되는 애니메이션 개수가 최소로 되도록 함
+// 소수를 이용하여 중복되는 모션 개수가 최소로 되도록 함
 $prime_numbers: (1 2 3 5 7 11 13 17 19);
 @for $i from 1 through length($prime_numbers) {
     .editing:nth-child(#{nth($prime_numbers, $i)}n) {
@@ -52,7 +48,7 @@ $prime_numbers: (1 2 3 5 7 11 13 17 19);
     }
 }
 
-// $keyframe_array 개수만큼 애니메이션을 생성함
+// $keyframe_array 개수 만큼 애니메이션을 생성함
 @for $i from 1 through length($keyframe_array) {
     $sign: nth(-1 1, random(2));
     $rand_tilt: $tilt * (random(20) * .01 + 1);
