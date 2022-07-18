@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Card.module.scss";
 
 type CardProps = {
-  id: number;
   title: string;
   desc: string;
   iconPath: string;
@@ -11,7 +10,7 @@ type CardProps = {
   isEdit: boolean;
 };
 
-export default function Card({ id, title, desc, iconPath, bgColor, accentColor, isEdit }: CardProps) {
+export default function Card({ title, desc, iconPath, bgColor, accentColor, isEdit }: CardProps) {
   return (
     <>
       <div
