@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from './Card';
 import styles from './CardList.module.scss';
 import mdrIcon from '../../../assets/Home/Card/mdr.png';
+import { ReactSortable } from "react-sortablejs";
 
 const cardList = [
   {
@@ -55,19 +56,23 @@ export default function CardList() {
   return (
     <>
       <button onClick={onClick}>홈 화면 편집</button>
-      <div className={styles.cards}>
-        {cards.map(card => {
-          return <Card 
-            id={card.id}
-            title={card.title}
-            desc={card.desc}
-            iconPath={card.iconPath}
-            bgColor={card.bgColor}
-            accentColor={card.accentColor}
-            isEdit={isEdit}
-          />
-        })}
-      </div>
+        <ReactSortable 
+          list={cards} 
+          setList={setCards}
+          className={styles.cards}
+        >
+          {cards.map((card) => (
+            <Card
+              key={card.id}
+              title={card.title}
+              desc={card.desc}
+              iconPath={card.iconPath}
+              bgColor={card.bgColor}
+              accentColor={card.accentColor}
+              isEdit={isEdit}
+            />
+          ))}
+        </ReactSortable>
     </>
-  )
+  );
 }
