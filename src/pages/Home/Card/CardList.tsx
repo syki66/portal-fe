@@ -56,23 +56,27 @@ export default function CardList() {
   return (
     <>
       <button onClick={onClick}>홈 화면 편집</button>
-        <ReactSortable 
-          list={cards} 
-          setList={setCards}
-          className={styles.cards}
-        >
-          {cards.map((card) => (
-            <Card
-              key={card.id}
-              title={card.title}
-              desc={card.desc}
-              iconPath={card.iconPath}
-              bgColor={card.bgColor}
-              accentColor={card.accentColor}
-              isEdit={isEdit}
-            />
-          ))}
-        </ReactSortable>
+      <ReactSortable
+        list={cards}
+        setList={setCards}
+        className={styles.cards}
+        disabled={!isEdit}
+        animation={400}
+      >
+        {cards.map((card) => (
+          <div key={card.id}>
+            <div className={`${isEdit ? styles.editing : ""}`}>
+              <Card
+                title={card.title}
+                desc={card.desc}
+                iconPath={card.iconPath}
+                bgColor={card.bgColor}
+                accentColor={card.accentColor}
+              />
+            </div>
+          </div>
+        ))}
+      </ReactSortable>
     </>
   );
 }
