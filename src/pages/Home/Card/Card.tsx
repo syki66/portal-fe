@@ -7,10 +7,9 @@ type CardProps = {
   iconPath: string;
   bgColor: string;
   accentColor: string;
-  isEdit: boolean;
 };
 
-export default function Card({ title, desc, iconPath, bgColor, accentColor, isEdit }: CardProps) {
+export default function Card({ title, desc, iconPath, bgColor, accentColor }: CardProps) {
   return (
     <>
       <div
@@ -19,7 +18,7 @@ export default function Card({ title, desc, iconPath, bgColor, accentColor, isEd
           color: accentColor,
           borderColor: accentColor,
         }}
-        className={`${styles.card} ${isEdit ? styles.editing : ""}`}
+        className={styles.card}
       >
         <img className={styles.icon} src={iconPath} />
         <div className={styles.content}>
