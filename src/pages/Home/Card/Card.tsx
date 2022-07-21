@@ -20,7 +20,7 @@ export default function Card({ title, desc, iconPath, bgColor, accentColor }: Ca
         }}
         className={styles.card}
       >
-        <img className={styles.icon} src={iconPath} />
+        <img draggable={false} className={styles.icon} src={iconPath} />
         <div className={styles.content}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.desc}>{desc}</p>
