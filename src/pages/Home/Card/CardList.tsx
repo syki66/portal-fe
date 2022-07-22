@@ -105,16 +105,15 @@ export default function CardList() {
         list={cards}
         setList={setCards}
         className={styles.cards}
+        ghostClass={styles.ghost}
+        chosenClass={styles.chosen}
+        dragClass={styles.drag}
         disabled={!isEdit}
         animation={400}
         onChoose={onChoose}
         onEnd={onEnd}
-        ghostClass={styles.ghost}
-        chosenClass={styles.chosen}
-        dragClass={styles.drag}
+
         // delayOnTouchStart={true}
-        // delay={3000}
-        // filter=".ignore-elements" // element 드래깅 방지
         // easing="cubic-bezier(1, 0, 0, 1)"
       >
         {/* 최상위 요소에 transform을 적용하면 sortable.js의 animation 옵션이 적용 안됨 */}

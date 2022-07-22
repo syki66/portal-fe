@@ -10,7 +10,6 @@ $size: 14px; // 카드 사이즈 (정사각형)
     text-align: center;
     display: grid;
     grid-template-rows: 2fr 1fr;
-    transition: transform .1s;
     &:hover {
         cursor: pointer;
     }
@@ -24,6 +23,6 @@ $size: 14px; // 카드 사이즈 (정사각형)
     .desc {
         font-size: 0.7em;
         padding: 0.5em 0em;
-    }
+    }    
 }
 

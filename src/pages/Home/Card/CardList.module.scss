@@ -10,12 +10,8 @@
     opacity: 0;
 }
 
-.chosen {
-
-}
-
-.drag {
-    // 커서 변경하기
+.chosen > .wrap > div, .drag > .wrap > div {
+    border: 0.1em solid;
 }
 
 .wrap {
