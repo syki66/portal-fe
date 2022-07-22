@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Card from './Card';
 import styles from './CardList.module.scss';
 import mdrIcon from '../../../assets/Home/Card/mdr.png';
+import deleteIcon from '../../../assets/Home/Card/delete.svg';
 import { ReactSortable } from "react-sortablejs";
 
 const cardList = [
@@ -47,10 +48,6 @@ const cardList = [
   }
 ]
 
-// const sortableOptions = {
-  
-// }
-
 export default function CardList() {
   const [cards, setCards] = useState(cardList);
   const [isEdit, setIsEdit] = useState(false);
@@ -58,6 +55,10 @@ export default function CardList() {
     isEdit ? setIsEdit(false) : setIsEdit(true);
   }
   const elemRef = useRef([0, 0]);
+
+  const onDelete = (id: number) => {
+    setCards(cards.filter((card) => card.id !== id));
+  };
 
   const onChoose = (event: any) => {
     const { layerX, layerY } = event.originalEvent; // offset은 하위 elem일 경우 좌표값이 거기에 맞춰서 변경됨
@@ -120,6 +121,16 @@ export default function CardList() {
         {cards.map((card) => (
           <div key={card.id} className={styles.card}>
             <div className={`${styles.wrap} ${isEdit ? styles.editing : ""}`}>
+              {isEdit ? (
+                <img
+                  className={styles.delete}  
+                  onClick={() => onDelete(card.id)}
+                  draggable={false}
+                  src={deleteIcon}
+                />
+              ) : (
+                <></>
+              )}
               <Card
                 title={card.title}
                 desc={card.desc}

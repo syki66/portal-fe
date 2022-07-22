@@ -26,7 +26,24 @@
 .wrap:not(.editing) {
     transition: transform 0.1s;
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
+    }
+}
+
+.delete{
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    width: 1em;
+    height: 1em;
+    padding: 0.3em;
+    border-radius: 100%;
+    color: white;
+    background-color: #e03c3c;
+    cursor: pointer;
+    transition: transform 0.2s;
+    &:hover {
+        transform: scale(2);
     }
 }
 
