@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# portal-fe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`독립된 하위 서비스들을 연결해주는 웹 서비스`의 프론트엔드 레포지토리
 
-## Available Scripts
+[backend 저장소 주소]()
 
-In the project directory, you can run:
+## 기술 스택
 
-### `npm start`
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![SASS](https://img.shields.io/badge/SCSS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React.js
+- Typescript
+- SCSS
+- CSS MODULE
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 디렉토리 구조
 
-### `npm test`
+대부분의 코드는 `src` 폴더에 작성됨
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    src
+    ├── assets                   # 정적 자료를 모아놓은 폴더
+    ├── components               # 공통 컴포넌트 폴더
+    │   ├── Card                    # 카드 컴포넌트
+    │   ├── Widget                  # 위젯 컴포넌트
+    │   └── DragAndDrop             # 드래그 앤 드롭 및 모션 컴포넌트
+    ├── pages                    # 페이지 컴포넌트 폴더
+    │   ├── Home                    # 메인 페이지
+    │   │   ├── ActivityCard            # 대시보드 컴포넌트
+    │   │   └── PortalCard              # 포털 카드 컴포넌트
+    │   ├── Login                   # Login 페이지
+    │   └── NotFound                # 404 페이지
+    ├── styles                   # 공통 스타일 폴더
+    └── utils                    # 공통 함수 폴더
 
-### `npm run build`
+## 컴포넌트 설명
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Card`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Widget`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `DragAndDrop`
 
-### `npm run eject`
+[react-sortablejs](https://github.com/SortableJS/react-sortablejs)에 편집 및 드롭 모션을 추가하여 래핑함
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+데이터에 중복되지 않은 `id: number` 값 `필수` (id값이 없으면 dataTransfer가 동작하지 않고, 중복된다면 컴포넌트가 복제되는 에러 발생)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+props로 `state`, `setState` 값을 받으며 `필수`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`DragAndDrop` 컴포넌트 사이에 자식 컴포넌트들을 넣으면 됨
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```typescript
+import React, { useState } from 'react'
+import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop'
+import Card from '../../../components/Card/Card'
 
-## Learn More
+const array = [
+    {
+      id: 1,
+      title: 'MDR',
+      content: 'Biomedical Management'
+    },
+    {
+      id: 2,
+      title: 'Clinical Assessment',
+      content: 'Questionaries and CRF management'
+    },
+    {
+      id: 3,
+      title: 'Data Transform',
+      content: 'SDTM and Data query'
+    }
+]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default function PortalCard() {
+    const [cards, setCards] = useState(array)
+    return (
+        <DragAndDrop
+            cards={cards}
+            setCards={setCards}
+        >
+            {cards.map(({ id, title, content }) => (
+                <Card 
+                    key={id}
+                    title={title}
+                    content={content}
+                />
+            ))}
+        </DragAndDrop>
+    )
+}
+```
