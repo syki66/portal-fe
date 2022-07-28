@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import CardList from '../Card/CardList'
-import Card from '../Card/Card'
-import { cardJson } from '../Card/cardData'
+import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop'
+import Card from '../../../components/Card/Card'
+import { cardJson } from '../../../sampleData/PortalCard'
 
-export default function AppCard() {
+export default function PortalCard() {
     const [cards, setCards] = useState(cardJson)
     return (
-        <CardList
+        <DragAndDrop
             cards={cards}
             setCards={setCards}
         >
@@ -20,6 +20,6 @@ export default function AppCard() {
                     accentColor={accentColor}
                 />
             ))}
-        </CardList>
+        </DragAndDrop>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import styles from './CardList.module.scss';
-import deleteIcon from '../../../assets/Home/Card/delete.svg';
+import styles from './DragAndDrop.module.scss';
+import deleteIcon from '../../assets/Home/Card/delete.svg';
 import { ReactSortable } from "react-sortablejs";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   setCards: any
 }
 
-export default function CardList({children, cards, setCards}: Props) {
+export default function DragAndDrop({children, cards, setCards}: Props) {
   const [isEdit, setIsEdit] = useState(false);
   const onClick = () => {
     isEdit ? setIsEdit(false) : setIsEdit(true);

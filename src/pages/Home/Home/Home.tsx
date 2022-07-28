@@ -1,10 +1,10 @@
 import React from 'react'
-import AppCard from './Card/AppCard'
+import PortalCard from '../PortalCard/PortalCard'
 
 export default function Home() {
   return (
     <>
-        <AppCard />
+        <PortalCard />
     </>
   )
 }
