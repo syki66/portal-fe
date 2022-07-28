@@ -11,7 +11,7 @@ const sampleList = [
       id: 2,
       title: 'Clinical Assessment',
       desc: 'Questionaries and CRF management',
-      iconPath: 'https://i.imgur.com/cOSEdWk.png',
+      iconPath: 'https://i.imgur.com/UCforPX.png',
       bgColor: '#ffecf2',
       accentColor: '#ff4883'
     },
@@ -19,7 +19,7 @@ const sampleList = [
       id: 3,
       title: 'Data Transform',
       desc: 'SDTM and Data query',
-      iconPath: 'https://i.imgur.com/cOSEdWk.png',
+      iconPath: 'https://i.imgur.com/WNzEJuu.png',
       bgColor: '#fff7eb',
       accentColor: '#ffb13e'
     },
@@ -27,7 +27,7 @@ const sampleList = [
       id: 4,
       title: 'Education',
       desc: 'List of service',
-      iconPath: 'https://i.imgur.com/cOSEdWk.png',
+      iconPath: 'https://i.imgur.com/41E0yQO.png',
       bgColor: '#eeecfe',
       accentColor: '#5643fc'
     },
@@ -35,23 +35,23 @@ const sampleList = [
       id: 5,
       title: 'Report',
       desc: 'Analysis and Sharing template',
-      iconPath: 'https://i.imgur.com/cOSEdWk.png',
+      iconPath: 'https://i.imgur.com/sPyvqVW.png',
       bgColor: '#efffef',
       accentColor: '#08a800'
     }
-  ]
+]
 
-  let cardJson: any[] = []
-  Array.from(Array(100).keys()).map((e, idx) => {
-    const rand = Math.floor(Math.random() * sampleList.length)
-    cardJson.push({
-        id: idx + 1,
-        title: sampleList[rand].title,
-        desc: sampleList[rand].desc,
-        iconPath: sampleList[rand].iconPath,
-        bgColor: sampleList[rand].bgColor,
-        accentColor: sampleList[rand].accentColor
-    })
-  })  
+let portalJson: any[] = []
+Array.from(Array(20).keys()).map((e, idx) => {
+  const rand = Math.floor(Math.random() * sampleList.length)
+  portalJson.push({
+      id: idx + 1,
+      title: sampleList[rand].title,
+      desc: sampleList[rand].desc,
+      iconPath: sampleList[rand].iconPath,
+      bgColor: sampleList[rand].bgColor,
+      accentColor: sampleList[rand].accentColor
+  })
+})  
 
-export { cardJson }
+export { portalJson }

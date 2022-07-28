@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop'
 import Card from '../../../components/Card/Card'
-import { cardJson } from '../../../sampleData/PortalCard'
+import { portalJson } from '../../../sampleData/PortalData'
 
 export default function PortalCard() {
-    const [cards, setCards] = useState(cardJson)
+    const [cards, setCards] = useState(portalJson)
     return (
         <DragAndDrop
             cards={cards}
