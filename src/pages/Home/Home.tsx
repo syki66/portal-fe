@@ -1,10 +1,10 @@
-import React from 'react';
-import CardList from './Card/CardList';
+import React from 'react'
+import AppCard from './Card/AppCard'
 
 export default function Home() {
   return (
     <>
-        <CardList />
+        <AppCard />
     </>
   )
 }

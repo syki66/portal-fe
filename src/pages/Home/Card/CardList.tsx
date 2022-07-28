@@ -1,55 +1,15 @@
 import React, { useRef, useState } from 'react';
-import Card from './Card';
 import styles from './CardList.module.scss';
-import mdrIcon from '../../../assets/Home/Card/mdr.png';
 import deleteIcon from '../../../assets/Home/Card/delete.svg';
 import { ReactSortable } from "react-sortablejs";
 
-const cardList = [
-  {
-    id: 1,
-    title: 'MDR',
-    desc: 'Biomedical Management',
-    iconPath: mdrIcon,
-    bgColor: '#e6fafe',
-    accentColor: '#05d4f6'
-  },
-  {
-    id: 2,
-    title: 'Clinical Assessment',
-    desc: 'Questionaries and CRF management',
-    iconPath: mdrIcon,
-    bgColor: '#ffecf2',
-    accentColor: '#ff4883'
-  },
-  {
-    id: 3,
-    title: 'Data Transform',
-    desc: 'SDTM and Data query',
-    iconPath: mdrIcon,
-    bgColor: '#fff7eb',
-    accentColor: '#ffb13e'
-  },
-  {
-    id: 4,
-    title: 'Education',
-    desc: 'List of service',
-    iconPath: mdrIcon,
-    bgColor: '#eeecfe',
-    accentColor: '#5643fc'
-  },
-  {
-    id: 5,
-    title: 'Report',
-    desc: 'Analysis and Sharing template',
-    iconPath: mdrIcon,
-    bgColor: '#eeecfe',
-    accentColor: '#5643fc'
-  }
-]
+type Props = {
+  children: any,
+  cards: any,
+  setCards: any
+}
 
-export default function CardList() {
-  const [cards, setCards] = useState(cardList);
+export default function CardList({children, cards, setCards}: Props) {
   const [isEdit, setIsEdit] = useState(false);
   const onClick = () => {
     isEdit ? setIsEdit(false) : setIsEdit(true);
@@ -57,14 +17,17 @@ export default function CardList() {
   const elemRef = useRef([0, 0]);
 
   const onDelete = (id: number) => {
-    setCards(cards.filter((card) => card.id !== id));
+    setCards(cards.filter((card: {id: number}) => card.id !== id));
   };
 
   const onChoose = (event: any) => {
-    const { layerX, layerY } = event.originalEvent; // offset은 하위 elem일 경우 좌표값이 거기에 맞춰서 변경됨
-    elemRef.current = [layerX, layerY];
+    // offset은 하위 elem을 클릭할 경우 오작동, layer는 컴포넌트 변경될 때 오작동 함
+    const { pageX, pageY } = event.originalEvent
+    const { offsetLeft, offsetTop } = event.item
+    const [ elemX, elemY ] = [pageX - offsetLeft, pageY - offsetTop] // 클릭한 요소 위에서의 마우스 위치
+    elemRef.current = [elemX, elemY]
   }
-
+  
   const onEnd = (event: any) => { // onUnchoose와 다른 점은 제자리에서 카드 놓을때 실행 안됨
     const {
       offsetLeft, offsetTop, // 아이템 이동 전 카드 좌표
@@ -118,7 +81,7 @@ export default function CardList() {
         // easing="cubic-bezier(1, 0, 0, 1)"
       >
         {/* 최상위 요소에 transform을 적용하면 sortable.js의 animation 옵션이 적용 안됨 */}
-        {cards.map((card) => (
+        {cards.map((card: {id: number}, index: number) => (
           <div key={card.id} className={styles.card}>
             <div className={`${styles.wrap} ${isEdit ? styles.editing : ""}`}>
               {isEdit ? (
@@ -131,13 +94,7 @@ export default function CardList() {
               ) : (
                 <></>
               )}
-              <Card
-                title={card.title}
-                desc={card.desc}
-                iconPath={card.iconPath}
-                bgColor={card.bgColor}
-                accentColor={card.accentColor}
-              />
+                {children[index]}
             </div>
           </div>
         ))}
