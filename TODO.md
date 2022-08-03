@@ -8,3 +8,4 @@
 - [ ] 404 페이지
 - [ ] Widget 컴포넌트 공통으로 가능할지
 - [ ] 편집모드에서 portal card 클릭시 api 변경이나 card 설정 등 변경 가능하게
+- [ ] prettier, eslint 등 devDependencies로 옮기기

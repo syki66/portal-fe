@@ -1,28 +1,27 @@
 $size: 16px; // 카드 사이즈 (정사각형)
 
 .card {
-    font-size: $size;
-    padding: 1em;
-    width: 8em;
-    height: 8em;
-    // border: 0.1em solid;
-    border-radius: 1em;
-    text-align: center;
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    &:hover {
-        cursor: pointer;
-    }
-    .icon {
-        width: 3em;
-        margin: auto;
-    }
-    .title {
-        font-weight: 700;
-    }
-    .desc {
-        font-size: 0.7em;
-        padding: 0.5em 0em;
-    }    
+  font-size: $size;
+  padding: 1em;
+  width: 8em;
+  height: 8em;
+  // border: 0.1em solid;
+  border-radius: 1em;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  &:hover {
+    cursor: pointer;
+  }
+  .icon {
+    width: 3em;
+    margin: auto;
+  }
+  .title {
+    font-weight: 700;
+  }
+  .desc {
+    font-size: 0.7em;
+    padding: 0.5em 0em;
+  }
 }
-

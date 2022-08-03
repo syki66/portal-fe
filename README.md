@@ -13,6 +13,7 @@
 ![SCSS](https://img.shields.io/badge/SCSS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
 ### `정적 분석 도구` 및 `formatter`
+
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 ![prettier](https://img.shields.io/badge/prettier-ffffff?style=for-the-badge&logo=prettier)
 
@@ -34,8 +35,6 @@
         │   └── PortalCard              # 포털 카드 컴포넌트
         ├── Login                   # Login 페이지
         └── NotFound                # 404 페이지
-    
-    
 
 ## 컴포넌트 사용법
 
@@ -46,19 +45,19 @@
 - 현재 아이콘 컬러 변경을 위한 filter 함수 사용시, 드롭 모션에서 딜레이(깜빡임)가 발생하는 문제가 있음
 
 ```ts
-import React, { useState } from 'react'
-import Card from './components/Card/Card'
+import React, { useState } from 'react';
+import Card from './components/Card/Card';
 
 export default function CardExample() {
-    return (
-        <Card 
-            title='MDR'
-            desc='Biomedical Management'
-            iconPath='https://i.imgur.com/cOSEdWk.png'
-            bgColor='#e6fafe'
-            accentColor='#05d4f6'
-        />
-    )
+  return (
+    <Card
+      title='MDR'
+      desc='Biomedical Management'
+      iconPath='https://i.imgur.com/cOSEdWk.png'
+      bgColor='#e6fafe'
+      accentColor='#05d4f6'
+    />
+  );
 }
 ```
 
@@ -74,45 +73,45 @@ export default function CardExample() {
 - `DragAndDrop` 컴포넌트 사이에 자식 컴포넌트들을 넣으면 됨
 
 ```ts
-import React, { useState } from 'react'
-import DragAndDrop from './components/DragAndDrop/DragAndDrop'
+import React, { useState } from 'react';
+import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 
 const array = [
-    {
-      id: 1,
-      title: 'MDR',
-      content: 'Biomedical Management'
-    },
-    {
-      id: 2,
-      title: 'Clinical Assessment',
-      content: 'Questionaries and CRF management'
-    },
-    {
-      id: 3,
-      title: 'Data Transform',
-      content: 'SDTM and Data query'
-    }
-]
+  {
+    id: 1,
+    title: 'MDR',
+    content: 'Biomedical Management',
+  },
+  {
+    id: 2,
+    title: 'Clinical Assessment',
+    content: 'Questionaries and CRF management',
+  },
+  {
+    id: 3,
+    title: 'Data Transform',
+    content: 'SDTM and Data query',
+  },
+];
 
 export default function DragAndDropExample() {
-    const [cards, setCards] = useState(array)
-    return (
-        <DragAndDrop
-            cards={cards}
-            setCards={setCards}
-        >
-            {cards.map(({ id, title, content }) => (
-                <div key={id}>
-                    <h1>{title}</h1>
-                    <p>{content}</p>
-                </div>
-            ))}
-        </DragAndDrop>
-    )
+  const [cards, setCards] = useState(array);
+  return (
+    <DragAndDrop
+      cards={cards}
+      setCards={setCards}
+    >
+      {cards.map(({ id, title, content }) => (
+        <div key={id}>
+          <h1>{title}</h1>
+          <p>{content}</p>
+        </div>
+      ))}
+    </DragAndDrop>
+  );
 }
 ```
 
 ## Todos
 
-- [TODO.md]()
+- [TODO.md](https://github.com/syki66/portal-fe/blob/master/TODO.md)

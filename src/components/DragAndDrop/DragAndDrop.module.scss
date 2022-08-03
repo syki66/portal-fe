@@ -1,50 +1,51 @@
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
 }
 
 .ghost {
-    opacity: 0;
+  opacity: 0;
 }
 
-.chosen > .wrap > div, .drag > .wrap > div {
-    border: 0.1em solid;
+.chosen > .wrap > div,
+.drag > .wrap > div {
+  border: 0.1em solid;
 }
 
 .wrap {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 .wrap:not(.editing) {
-    transition: transform 0.1s;
-    &:hover {
-        transform: scale(1.1);
-    }
+  transition: transform 0.1s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
-.delete{
-    position: absolute;
-    top: -0.5em;
-    right: -0.5em;
-    width: 1em;
-    height: 1em;
-    padding: 0.3em;
-    border-radius: 100%;
-    color: white;
-    background-color: #e03c3c;
-    cursor: pointer;
-    transition: transform 0.2s;
-    &:hover {
-        transform: scale(2);
-    }
+.delete {
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  width: 1em;
+  height: 1em;
+  padding: 0.3em;
+  border-radius: 100%;
+  color: white;
+  background-color: #e03c3c;
+  cursor: pointer;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(2);
+  }
 }
 
 $tilt: 2; // 홈화면 편집시 기울어지는 각도
@@ -53,52 +54,43 @@ $speed: 0.35; // 홈화면 편집시 애니메이션 진행 속도
 
 $keyframe_array: ();
 @for $i from 1 through 10 {
-    $keyframe_array: append($keyframe_array, keyframe_ + #{$i});
+  $keyframe_array: append($keyframe_array, keyframe_ + #{$i});
 }
 
 // 소수를 이용하여 중복되는 모션 개수가 최소로 되도록 함
 $prime_numbers: (1 2 3 5 7 11 13 17 19);
 @for $i from 1 through length($prime_numbers) {
-    .card:nth-child(#{nth($prime_numbers, $i)}n) .editing {
-        animation: 
-            nth($keyframe_array, random(length($keyframe_array)))
-            $speed + (random(20) * .01) + s
-            linear
-            infinite;
-    }
+  .card:nth-child(#{nth($prime_numbers, $i)}n) .editing {
+    animation: nth($keyframe_array, random(length($keyframe_array)))
+      $speed +
+      (random(20) * 0.01) +
+      s
+      linear
+      infinite;
+  }
 }
 
 // $keyframe_array 개수 만큼 애니메이션을 생성함
 @for $i from 1 through length($keyframe_array) {
-    $sign: nth(-1 1, random(2));
-    $rand_tilt: $tilt * (random(20) * .01 + 1);
-    $rand_shake: nth(-1 1, random(2)) * $shake;
+  $sign: nth(-1 1, random(2));
+  $rand_tilt: $tilt * (random(20) * 0.01 + 1);
+  $rand_shake: nth(-1 1, random(2)) * $shake;
 
-    @keyframes #{nth($keyframe_array, $i)} {
-        0% {
-            transform:
-                rotate(0deg) 
-                translate(0em, 0em);
-        }
-        25% {
-            transform:
-                rotate($sign * $rand_tilt + deg) 
-                translate($rand_shake + em, $rand_shake + em);
-        }
-        50% {
-            transform:
-                rotate(0deg) 
-                translate(0em, 0em);
-        }
-        75% {
-            transform: 
-                rotate(-$sign * $rand_tilt + deg) 
-                translate($rand_shake + em, $rand_shake + em);
-        }
-        100% {
-            transform: 
-                rotate(0deg) 
-                translate(0em, 0em);
-        }
+  @keyframes #{nth($keyframe_array, $i)} {
+    0% {
+      transform: rotate(0deg) translate(0em, 0em);
     }
+    25% {
+      transform: rotate($sign * $rand_tilt + deg) translate($rand_shake + em, $rand_shake + em);
+    }
+    50% {
+      transform: rotate(0deg) translate(0em, 0em);
+    }
+    75% {
+      transform: rotate(-$sign * $rand_tilt + deg) translate($rand_shake + em, $rand_shake + em);
+    }
+    100% {
+      transform: rotate(0deg) translate(0em, 0em);
+    }
+  }
 }
