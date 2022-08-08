@@ -67,7 +67,7 @@ export default function CardExample() {
 
 ### `DragAndDrop`
 
-- [react-sortablejs](https://github.com/SortableJS/react-sortablejs)에 편집 및 드롭 모션을 추가하여 래핑함
+- [react-sortablejs](https://github.com/SortableJS/react-sortablejs)에 편집, 삭제 및 드롭 모션을 추가하여 래핑함
 - 데이터에 중복되지 않은 `id: number` 값 `필수` (id값이 없으면 dataTransfer가 동작하지 않고, 중복된다면 컴포넌트가 복제되는 에러 발생)
 - props로 `state`, `setState` 값을 받으며 `필수`
 - `DragAndDrop` 컴포넌트 사이에 자식 컴포넌트들을 넣으면 됨
@@ -110,6 +110,29 @@ export default function DragAndDropExample() {
     </DragAndDrop>
   );
 }
+```
+
+## 코드 검사
+
+커밋하면 먼저 `eslint`와 `prettier`가 자동으로 실행되며, 이를 통과하지 못할시 커밋이 취소됨
+
+아래 명령어를 통해서 자동으로 수정 가능 _(자동으로 수정되지 않는 경우 직접 수정)_
+
+```
+npm run lint
+```
+
+vscode 확장 프로그램에서 eslint 및 prettier를 설치하고, 아래 설정을 vscode의 `settings.json`에 추가하면 파일을 저장할때마다 자동 수정할 수 있음
+
+```json
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "eslint.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 ```
 
 ## Todos
