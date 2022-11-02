@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Card.module.scss';
-import { hexToFilter } from '../../utils/filter';
 
 type CardProps = {
   title: string;
@@ -21,10 +20,12 @@ export default function Card({ title, desc, iconPath, bgColor, accentColor }: Ca
         }}
         className={styles.card}
       >
-        <img
+        <div
           className={styles.icon}
-          src={iconPath}
-          style={{ filter: `${hexToFilter(accentColor)}` }} // 필터 적용하면 드롭할 때 약간의 딜레이(깜빡임)이 생김
+          style={{
+            background: accentColor,
+            WebkitMask: `url(${iconPath}) center/contain no-repeat`,
+          }}
           draggable={false}
         />
         <div className={styles.content}>
