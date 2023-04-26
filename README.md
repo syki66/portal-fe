@@ -6,6 +6,8 @@
 
 ## 시연
 
+[시연 링크](https://portal-fe.netlify.app/)
+
 ![demo](./demo.gif)
 
 ## 도구
