@@ -66,7 +66,12 @@ export default function DragAndDrop({ children, cards, setCards }: Props) {
 
   return (
     <>
-      <button onClick={onClick}>홈 화면 편집</button>
+      <div
+        onClick={onClick}
+        className={styles.button}
+      >
+        화면 편집
+      </div>
       <ReactSortable
         list={cards}
         setList={setCards}
