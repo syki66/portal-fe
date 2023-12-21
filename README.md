@@ -2,7 +2,9 @@
 
 `독립된 하위 서비스들을 연결해주는 웹 서비스`의 프론트엔드 저장소
 
-[백엔드 저장소 주소]()
+- ios 홈 화면 편집 애니메이션 구현
+- 재사용 가능한 컴포넌트로 제작
+- css만 활용하여 랜덤 애니메이션 구현
 
 ## 시연
 
@@ -138,6 +140,22 @@ vscode 확장 프로그램에서 eslint 및 prettier를 설치하고, 아래 설
   "eslint.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
+```
+
+## 실행
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+## 빌드
+
+```
+npm run build
 ```
 
 ## Todos
