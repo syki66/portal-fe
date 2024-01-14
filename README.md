@@ -10,7 +10,7 @@
 
 [시연 링크](https://portal-fe.netlify.app/)
 
-![demo](./demo.gif)
+![demo](./review/result.gif)
 
 ## 도구
 
